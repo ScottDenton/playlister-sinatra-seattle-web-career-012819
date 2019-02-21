@@ -3,8 +3,13 @@ class SongsController < ApplicationController
 
   get '/songs' do
     @songs = Song.all
-    binding.pry
+
     erb :index
+  end
+
+  get '/songs/:id' do
+    @song = Song.find(params[:id])
+    erb :show
   end
 
 end
