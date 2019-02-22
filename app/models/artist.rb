@@ -4,10 +4,11 @@ class Artist < ActiveRecord::Base
 
   def slug
     self.name.gsub(/\s/,'-')
+
   end
 
   def self.find_by_slug(slug)
-    artist_name = slug.gsub('-',' ').split(" ").map{|w| w.capitalize}.join(' ')
+    artist_name = slug.gsub('-',' ')
     Artist.all.find{|artist| artist.name == artist_name}
   end
 

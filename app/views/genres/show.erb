@@ -8,7 +8,28 @@
 </head>
 <body>
 
-  <h2>Genre Title: <%= @genre.name.capitalize %></h2>
+  <h2>Genre Title: <%= @genre.name %></h2>
+
+
+  <h2>Songs</h2>
+  <% all_songs = SongGenre.all.select{|song_genre| song_genre.genre_id == @genre.id}  %>
+
+  <% all_songs.each do |song_genre| %>
+    <ul>
+      <a href="/songs/<%= song_genre.song.slug %>"<li><%=song_genre.song.name  %></li> </a>
+    </ul>
+  <% end  %>
+
+  <h2>Artists</h2>
+  <% all_songs = SongGenre.all.select{|song_genre| song_genre.genre_id == @genre.id}  %>
+  <% all_songs.each do |song_genre| %>
+    <ul>
+      <a href="/artists/<%= song_genre.song.artist.slug %>"<li><%=song_genre.song.artist.name  %></li> </a>
+    </ul>
+  <% end  %>
+
+
+
 
 </body>
 </html>
